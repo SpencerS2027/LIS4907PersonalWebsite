@@ -275,6 +275,7 @@
     <nav aria-label="Main navigation">
       <button type="button" id="nav-home" class="active" onclick="switchPage('home')">Home</button>
       <button type="button" id="nav-exp" onclick="switchPage('experiences')">Experiences</button>
+      <button type="button" id="nav-port" onclick="switchPage('portfolio')">Portfolio</button>
     </nav>
   </header>
 
@@ -380,29 +381,58 @@
     </main>
   </div>
 
+ <!-- VIEW 3: PORTFOLIO -->
+  <div id="view-portfolio" class="page-view" style="display: none;">
+    <main class="exp-container">
+      <div class="page-intro">
+        <h1>Portfolio</h1>
+      </div>
+      
+      <section class="experience-section">
+        <div class="video-wrapper">
+            <iframe class="scribd_iframe_embed" title="Sanford Auto Detail.pdf" src="https://www.scribd.com/embeds/1091666303/content?start_page=1&view_mode=scroll&access_key=key-pjkpjWwW12Uq7kc9nEv3" tabindex="0" data-auto-height="true" data-aspect-ratio="0.7729220222793488" scrolling="no" width="100%" height="600" frameborder="0" ></iframe> <p style="margin: 12px auto 6px auto; font-family: Helvetica,Arial,Sans-serif; font-size: 14px; line-height: normal; display: block;"> <a title="View Sanford Auto Detail.pdf on Scribd" href="https://www.scribd.com/document/1091666303/Sanford-Auto-Detail-pdf#from_embed" style="color: #098642; text-decoration: underline;"> Sanford Auto Detail.pdf </a> by <a title="View 968vthvmcj's profile on Scribd" href="https://www.scribd.com/user/1038672477/968vthvmcj#from_embed" style="color: #098642; text-decoration: underline;" > 968vthvmcj </a> </p>
+        </div>
+      </section>
+    </main>
+  </div>
+  
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 Spencer Sanford. All rights reserved.</p>
   </footer>
 
   <!-- Page Switching Script -->
+ <!-- Page Switching Script -->
   <script>
     function switchPage(targetPage) {
       var homeView = document.getElementById('view-home');
       var expView = document.getElementById('view-experiences');
+      var portView = document.getElementById('view-portfolio');
+      
       var homeBtn = document.getElementById('nav-home');
       var expBtn = document.getElementById('nav-exp');
+      var portBtn = document.getElementById('nav-port');
 
+      // Hide all pages first
+      homeView.style.display = 'none';
+      expView.style.display = 'none';
+      portView.style.display = 'none';
+
+      // Remove "active" bolding from all buttons
+      homeBtn.classList.remove('active');
+      expBtn.classList.remove('active');
+      portBtn.classList.remove('active');
+
+      // Show the selected page and bold its button
       if (targetPage === 'home') {
         homeView.style.display = 'block';
-        expView.style.display = 'none';
         homeBtn.classList.add('active');
-        expBtn.classList.remove('active');
-      } else {
-        homeView.style.display = 'none';
+      } else if (targetPage === 'experiences') {
         expView.style.display = 'block';
         expBtn.classList.add('active');
-        homeBtn.classList.remove('active');
+      } else if (targetPage === 'portfolio') {
+        portView.style.display = 'block';
+        portBtn.classList.add('active');
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
